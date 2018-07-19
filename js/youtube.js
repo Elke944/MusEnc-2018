@@ -22,7 +22,11 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
 // after the API code downloads.
 var player;
 function onYouTubeIframeAPIReady() {
+<<<<<<< HEAD
   console.log('ok')
+=======
+  console.log('h')
+>>>>>>> 523e31bbf6f2af645731b7aa0fc8f27945c57860
   // Get performance data from MEI file
   /* Setup and send the request */
   var xhr = new XMLHttpRequest()
@@ -53,6 +57,9 @@ function onYouTubeIframeAPIReady() {
         }
 
         /* Set up YouTube player */
+        if (document.querySelector('#player')) {
+          document.querySelector('#player').innerHTML = ''
+        }
         player = new YT.Player('player', {
           height: '390',
           width: '640',
@@ -83,12 +90,15 @@ function onPlayerReady(event, clips) {
       event.target.seekTo(clip.begin)
       event.target.playVideo();
     }
-    document.querySelector(clips[i].startid).addEventListener('click', clickHandler.bind(this, event, clips[i]))
+    if (document.querySelector(clips[i].startid)) {
+      document.querySelector(clips[i].startid).addEventListener('click', clickHandler.bind(this, event, clips[i]))
+    }
   }
 }
 
 //    The API calls this function when the player's state changes.
 function onPlayerStateChange(event, clips) {
+  onPlayerReady(event, clips) // redundant but needed to refresh click events on score when verovio page changes
   if (event.data == YT.PlayerState.ENDED ||
       event.data == YT.PlayerState.PAUSED) {
         stopVideo()

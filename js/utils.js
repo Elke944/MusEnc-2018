@@ -32,12 +32,18 @@ function showScore(id, path) {
       document.getElementById(id).innerHTML = svg
       onYouTubeIframeAPIReady()
     }
+    if (player) {
+      player.stopVideo();
+    }
   })
   document.querySelector("#prev").addEventListener('click', function() {
     if (page > 1) {
       page--
       var svg = vrvToolkit.renderPage(page)
       document.getElementById(id).innerHTML = svg
+    }
+    if (player) {
+      player.stopVideo();
     }
   })
 }
