@@ -30,6 +30,7 @@ function showScore(id, path) {
       page++
       var svg = vrvToolkit.renderPage(page)
       document.getElementById(id).innerHTML = svg
+      onYouTubeIframeAPIReady()
     }
   })
   document.querySelector("#prev").addEventListener('click', function() {
