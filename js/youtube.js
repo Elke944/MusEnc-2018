@@ -22,11 +22,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
 // after the API code downloads.
 var player;
 function onYouTubeIframeAPIReady() {
-<<<<<<< HEAD
   console.log('ok')
-=======
-  console.log('h')
->>>>>>> 523e31bbf6f2af645731b7aa0fc8f27945c57860
   // Get performance data from MEI file
   /* Setup and send the request */
   var xhr = new XMLHttpRequest()
